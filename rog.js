@@ -14,7 +14,7 @@ async function mainAsync(file) {
   }
 
   await githubUrl(file, { open: true });
-  console.log("ok");
+  process.exit(0);
 }
 
 module.exports = mainAsync;
