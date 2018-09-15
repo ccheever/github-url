@@ -4,7 +4,8 @@
   "description": "Gets the Github URL for a file on your filesystem",
   "main": "index.js",
   "bin": {
-    "github-url": "index.js"
+    "github-url": "index.js",
+    "rog": "rog.js"
   },
   "repository": "https://github.com/ccheever/github-url.git",
   "author": "Charlie Cheever <ccheever@gmail.com>",

@@ -40,15 +40,18 @@ async function getGithubUrlAsync(file, opts) {
   let relativePath = await getRelativePathAsync(file);
   let repo = await getGitRepositoryUrlAsync(file);
   let repoWeb = repo.substr(0, repo.length - 4);
+  let url;
   if (opts.raw) {
     let repoRaw = repoWeb.replace(/github\.com/, 'raw.githubusercontent.com');
-    let url = [repoRaw, branch, relativePath].join('/');
-    return url;
+    url = [repoRaw, branch, relativePath].join('/');
   } else {
     let type = isDir ? 'tree' : 'blob';
-    let url = [repoWeb, type, branch, relativePath].join('/');
-    return url;
+    url = [repoWeb, type, branch, relativePath].join('/');
   }
+  if (opts.open) {
+    opn(url);
+  }
+  return url;
 }
 
 module.exports = getGithubUrlAsync;
@@ -68,9 +71,6 @@ if (require.main === module) {
         try {
           let url = await getGithubUrlAsync(x, args);
           console.log(url);
-          if (args.open) {
-            opn(url);
-          }
         } catch (e) {
           console.error("Couldn't figure out URL for " + JSON.stringify(x) + ' | ' + e.message);
           console.log();
