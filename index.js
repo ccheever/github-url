@@ -4,6 +4,7 @@ let fs = require('fs');
 let path = require('path');
 
 let minimist = require('minimist');
+let opn = require('opn');
 let spawnAsync = require('@expo/spawn-async');
 
 async function getGitRepositoryUrlAsync(file) {
@@ -67,6 +68,9 @@ if (require.main === module) {
         try {
           let url = await getGithubUrlAsync(x, args);
           console.log(url);
+          if (args.open) {
+            opn(url);
+          }
         } catch (e) {
           console.error("Couldn't figure out URL for " + JSON.stringify(x) + ' | ' + e.message);
           console.log();
