@@ -1,6 +1,6 @@
 {
   "name": "github-url-for-file",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets the Github URL for a file on your filesystem",
   "main": "index.js",
   "bin": {
