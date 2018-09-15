@@ -66,7 +66,18 @@ Object.assign(module.exports, {
 if (require.main === module) {
   (async function() {
     let args = minimist(process.argv.slice(2));
-    if (args._.length > 0) {
+    if (args.help) {
+      console.error(`
+  Prints out the Github URL for a file on your file system
+
+  Usage:
+
+      github-url <file1> <file2> [--raw]
+  `);
+    } else {
+      if (args._.length === 0) {
+        args._.push('.');
+      }
       for (let x of args._) {
         try {
           let url = await getGithubUrlAsync(x, args);
@@ -76,14 +87,6 @@ if (require.main === module) {
           console.log();
         }
       }
-    } else {
-      console.error(`
-    Prints out the Github URL for a file on your file system
-
-    Usage:
-
-        github-url <file1> <file2> [--raw]
-    `);
     }
   })();
 }
