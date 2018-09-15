@@ -10,7 +10,10 @@ let githubUrl = require('.');
 async function mainAsync(file) {
   let isDir = fs.lstatSync(file).isDirectory();
   if (isDir) {
-    file = path.join(file, 'README.md');
+    let readme = path.join(file, 'README.md');
+    if (fs.existsSync(readme)) {
+      file = readme;
+    }
   }
 
   await githubUrl(file, { open: true });
