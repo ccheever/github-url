@@ -1,0 +1,19 @@
+{
+  "name": "github-url",
+  "version": "1.0.0",
+  "description": "Gets the Github URL for a file on your filesystem",
+  "main": "index.js",
+  "bin": {
+    "github-url": "index.js"
+  },
+  "repository": "https://github.com/ccheever/github-url.git",
+  "author": "Charlie Cheever <ccheever@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "project-repl": "^1.5.0"
+  },
+  "dependencies": {
+    "@expo/spawn-async": "^1.3.0",
+    "minimist": "^1.2.0"
+  }
+}
